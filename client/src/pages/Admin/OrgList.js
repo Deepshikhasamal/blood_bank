@@ -5,8 +5,8 @@ import API from "../../services/API";
 
 const OrgList = () => {
   const [data, setData] = useState([]);
-  //find donar records
-  const getDonars = async () => {
+  //find donor records
+  const getDonors = async () => {
     try {
       const { data } = await API.get("/admin/org-list");
       console.log(data);
@@ -19,7 +19,7 @@ const OrgList = () => {
   };
 
   useEffect(() => {
-    getDonars();
+    getDonors();
   }, []);
 
   //DELETE FUNCTION
@@ -30,7 +30,7 @@ const OrgList = () => {
         "Sure"
       );
       if (!answer) return;
-      const { data } = await API.delete(`/admin/delete-donar/${id}`);
+      const { data } = await API.delete(`/admin/delete-donor/${id}`);
       alert(data?.message);
       window.location.reload();
     } catch (error) {

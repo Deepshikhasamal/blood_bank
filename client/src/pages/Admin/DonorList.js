@@ -3,15 +3,15 @@ import Layout from "./../../components/shared/Layout/Layout";
 import moment from "moment";
 import API from "../../services/API";
 
-const DonarList = () => {
+const DonorList = () => {
   const [data, setData] = useState([]);
-  //find donar records
-  const getDonars = async () => {
+  //find donor records
+  const getDonors = async () => {
     try {
-      const { data } = await API.get("/admin/donar-list");
+      const { data } = await API.get("/admin/donor-list");
       //   console.log(data);
       if (data?.success) {
-        setData(data?.donarData);
+        setData(data?.donorData);
       }
     } catch (error) {
       console.log(error);
@@ -19,18 +19,18 @@ const DonarList = () => {
   };
 
   useEffect(() => {
-    getDonars();
+    getDonors();
   }, []);
 
   //DELETE FUNCTION
   const handelDelete = async (id) => {
     try {
       let answer = window.prompt(
-        "Are You SUre Want To Delete This Donar",
+        "Are You SUre Want To Delete This Donor",
         "Sure"
       );
       if (!answer) return;
-      const { data } = await API.delete(`/admin/delete-donar/${id}`);
+      const { data } = await API.delete(`/admin/delete-donor/${id}`);
       alert(data?.message);
       window.location.reload();
     } catch (error) {
@@ -73,4 +73,4 @@ const DonarList = () => {
   );
 };
 
-export default DonarList;
+export default DonorList;

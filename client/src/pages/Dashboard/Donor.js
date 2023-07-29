@@ -3,15 +3,15 @@ import Layout from "../../components/shared/Layout/Layout";
 import API from "../../services/API";
 import moment from "moment";
 
-const Donar = () => {
+const Donor = () => {
   const [data, setData] = useState([]);
-  //find donar records
-  const getDonars = async () => {
+  //find donor records
+  const getDonors = async () => {
     try {
-      const { data } = await API.get("/inventory/get-donars");
+      const { data } = await API.get("/inventory/get-donors");
       //   console.log(data);
       if (data?.success) {
-        setData(data?.donars);
+        setData(data?.donors);
       }
     } catch (error) {
       console.log(error);
@@ -19,7 +19,7 @@ const Donar = () => {
   };
 
   useEffect(() => {
-    getDonars();
+    getDonors();
   }, []);
 
   return (
@@ -48,4 +48,4 @@ const Donar = () => {
   );
 };
 
-export default Donar;
+export default Donor;

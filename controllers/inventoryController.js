@@ -11,8 +11,8 @@ const createInventoryController = async (req, res) => {
     if (!user) {
       throw new Error("User Not Found");
     }
-    // if (inventoryType === "in" && user.role !== "donar") {
-    //   throw new Error("Not a donar account");
+    // if (inventoryType === "in" && user.role !== "donor") {
+    //   throw new Error("Not a donor account");
     // }
     // if (inventoryType === "out" && user.role !== "hospital") {
     //   throw new Error("Not a hospital");
@@ -70,7 +70,7 @@ const createInventoryController = async (req, res) => {
       }
       req.body.hospital = user?._id;
     } else {
-      req.body.donar = user?._id;
+      req.body.donor = user?._id;
     }
 
     //save record
@@ -97,7 +97,7 @@ const getInventoryController = async (req, res) => {
       .find({
         organisation: req.body.userId,
       })
-      .populate("donar")
+      .populate("donor")
       .populate("hospital")
       .sort({ createdAt: -1 });
     return res.status(200).send({
@@ -119,7 +119,7 @@ const getInventoryHospitalController = async (req, res) => {
   try {
     const inventory = await inventoryModel
       .find(req.body.filters)
-      .populate("donar")
+      .populate("donor")
       .populate("hospital")
       .populate("organisation")
       .sort({ createdAt: -1 });
@@ -163,26 +163,26 @@ const getRecentInventoryController = async (req, res) => {
 };
 
 // GET DONAR REOCRDS
-const getDonarsController = async (req, res) => {
+const getDonorsController = async (req, res) => {
   try {
     const organisation = req.body.userId;
-    //find donars
-    const donorId = await inventoryModel.distinct("donar", {
+    //find donors
+    const donorId = await inventoryModel.distinct("donor", {
       organisation,
     });
     // console.log(donorId);
-    const donars = await userModel.find({ _id: { $in: donorId } });
+    const donors = await userModel.find({ _id: { $in: donorId } });
 
     return res.status(200).send({
       success: true,
-      message: "Donar Record Fetched Successfully",
-      donars,
+      message: "Donor Record Fetched Successfully",
+      donors,
     });
   } catch (error) {
     console.log(error);
     return res.status(500).send({
       success: false,
-      message: "Error in Donar records",
+      message: "Error in Donor records",
       error,
     });
   }
@@ -217,8 +217,8 @@ const getHospitalController = async (req, res) => {
 // GET ORG PROFILES
 const getOrgnaisationController = async (req, res) => {
   try {
-    const donar = req.body.userId;
-    const orgId = await inventoryModel.distinct("organisation", { donar });
+    const donor = req.body.userId;
+    const orgId = await inventoryModel.distinct("organisation", { donor });
     //find org
     const organisations = await userModel.find({
       _id: { $in: orgId },
@@ -264,7 +264,7 @@ const getOrgnaisationForHospitalController = async (req, res) => {
 module.exports = {
   createInventoryController,
   getInventoryController,
-  getDonarsController,
+  getDonorsController,
   getHospitalController,
   getOrgnaisationController,
   getOrgnaisationForHospitalController,

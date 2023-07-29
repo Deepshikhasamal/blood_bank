@@ -1,17 +1,17 @@
 const userModel = require("../models/userModel");
 
 //GET DONAR LIST
-const getDonarsListController = async (req, res) => {
+const getDonorsListController = async (req, res) => {
   try {
-    const donarData = await userModel
-      .find({ role: "donar" })
+    const donorData = await userModel
+      .find({ role: "donor" })
       .sort({ createdAt: -1 });
 
     return res.status(200).send({
       success: true,
-      Toatlcount: donarData.length,
-      message: "Donar List Fetched Successfully",
-      donarData,
+      Toatlcount: donorData.length,
+      message: "Donor List Fetched Successfully",
+      donorData,
     });
   } catch (error) {
     console.log(error);
@@ -69,7 +69,7 @@ const getOrgListController = async (req, res) => {
 // =======================================
 
 //DELETE DONAR
-const deleteDonarController = async (req, res) => {
+const deleteDonorController = async (req, res) => {
   try {
     await userModel.findByIdAndDelete(req.params.id);
     return res.status(200).send({
@@ -88,8 +88,8 @@ const deleteDonarController = async (req, res) => {
 
 //EXPORT
 module.exports = {
-  getDonarsListController,
+  getDonorsListController,
   getHospitalListController,
   getOrgListController,
-  deleteDonarController,
+  deleteDonorController,
 };

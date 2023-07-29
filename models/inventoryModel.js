@@ -18,7 +18,7 @@ const inventorySchema = new mongoose.Schema(
     },
     email: {
       type: String,
-      required: [true, "Donar Email is Required"],
+      required: [true, "Donor Email is Required"],
     },
     organisation: {
       type: mongoose.Schema.Types.ObjectId,
@@ -32,7 +32,7 @@ const inventorySchema = new mongoose.Schema(
         return this.inventoryType === "out";
       },
     },
-    donar: {
+    donor: {
       type: mongoose.Schema.Types.ObjectId,
       ref: "users",
       required: function () {
