@@ -1,4 +1,4 @@
-const userModel = require("../models/userModel");
+const userModel = require("../models/userModel");//sends 
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 
@@ -13,9 +13,9 @@ const registerController = async (req, res) => {
       });
     }
     //hash password
-    const salt = await bcrypt.genSalt(10);
+    const salt = await bcrypt.genSalt(10);//hashing of data(improves sequrity of the password)
     const hashedPassword = await bcrypt.hash(req.body.password, salt);
-    req.body.password = hashedPassword;
+    req.body.password = hashedPassword;//replacing the password to hashedpassword
     //rest data
     const user = new userModel(req.body);
     await user.save();
