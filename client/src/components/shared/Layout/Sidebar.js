@@ -75,7 +75,7 @@ const Sidebar = () => {
               }`}
             >
               <i className="fa-sharp fa-solid fa-building-ngo"></i>
-              <Link to="/orgnaisation">Orgnaisation</Link>
+              <Link to="/orgnaisation">Organisation</Link>
             </div>
           )}
           {user?.role === "hospital" && (

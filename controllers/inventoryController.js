@@ -215,7 +215,7 @@ const getHospitalController = async (req, res) => {
 };
 
 // GET ORG PROFILES
-const getOrgnaisationController = async (req, res) => {
+const getOrganisationController = async (req, res) => {
   try {
     const donor = req.body.userId;
     const orgId = await inventoryModel.distinct("organisation", { donor });
@@ -238,7 +238,7 @@ const getOrgnaisationController = async (req, res) => {
   }
 };
 // GET ORG for Hospital
-const getOrgnaisationForHospitalController = async (req, res) => {
+const getOrganisationForHospitalController = async (req, res) => {
   try {
     const hospital = req.body.userId;
     const orgId = await inventoryModel.distinct("organisation", { hospital });
@@ -266,8 +266,8 @@ module.exports = {
   getInventoryController,
   getDonorsController,
   getHospitalController,
-  getOrgnaisationController,
-  getOrgnaisationForHospitalController,
+  getOrganisationController,
+  getOrganisationForHospitalController,
   getInventoryHospitalController,
   getRecentInventoryController,
 };

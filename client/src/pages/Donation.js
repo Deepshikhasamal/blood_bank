@@ -36,7 +36,7 @@ const Donation = () => {
           <thead>
             <tr>
               <th scope="col">Blood Group</th>
-              <th scope="col">Inventory TYpe</th>
+              <th scope="col">Inventory type</th>
               <th scope="col">Quantity</th>
               <th scope="col">Email</th>
               <th scope="col">Date</th>

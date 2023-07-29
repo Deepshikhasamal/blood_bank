@@ -11,7 +11,7 @@ const AdminHome = () => {
           <h1>
             Welcome Admin <i className="text-success">{user?.name}</i>
           </h1>
-          <h3>Manage Blood Bank App </h3>
+          <h3>Manage Raktdaan App </h3>
           <hr />
           <p>
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Ad
