@@ -6,7 +6,7 @@ module.exports = async (req, res, next) => {
     if (user?.role !== "admin") {
       return res.status(401).send({
         success: false,
-        message: "AUth Fialed",
+        message: "Auth Failed",
       });
     } else {
       next();
@@ -16,7 +16,7 @@ module.exports = async (req, res, next) => {
     return res.status(401).send({
       success: false,
       message: "Auth Failed, ADMIN API",
-      errro,
+      error,
     });
   }
 };

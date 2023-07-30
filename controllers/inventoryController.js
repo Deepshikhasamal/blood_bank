@@ -78,13 +78,13 @@ const createInventoryController = async (req, res) => {
     await inventory.save();
     return res.status(201).send({
       success: true,
-      message: "New Blood Reocrd Added",
+      message: "New Blood Record Added",
     });
   } catch (error) {
     console.log(error);
     return res.status(500).send({
       success: false,
-      message: "Errro In Create Inventory API",
+      message: "Error In Create Inventory API",
       error,
     });
   }
@@ -149,7 +149,7 @@ const getRecentInventoryController = async (req, res) => {
       .sort({ createdAt: -1 });
     return res.status(200).send({
       success: true,
-      message: "recent Invenotry Data",
+      message: "recent Inventory Data",
       inventory,
     });
   } catch (error) {

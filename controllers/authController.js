@@ -21,7 +21,7 @@ const registerController = async (req, res) => {
     await user.save();
     return res.status(201).send({
       success: true,
-      message: "User Registerd Successfully",
+      message: "User Registered Successfully",
       user,
     });
   } catch (error) {
